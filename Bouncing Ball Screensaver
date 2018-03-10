@@ -29,61 +29,62 @@ while drawing:
 
 
 
-    x, y = ball.center
-    prev_x = x
-    prev_y = y
 
-    if moving_right:
-        x += horizontal_speed
-        ball.flip_x = False
-    else:
-        x -= horizontal_speed
-        ball.flip_x = True
-    if moving_down:
-        y += vertical_speed
-    else:
-        y -= vertical_speed
+        x, y = ball.center
+        prev_x = x
+        prev_y = y
 
-    ball.center = (x, y)
-
-
-
-
-    if x < 0:
-        moving_right = True
-        if ball.image == "UrchinPurple.png":
-           ball.image = "UrchinRed.png"
+        if moving_right:
+            x += horizontal_speed
+            ball.flip_x = False
         else:
-            ball.image = "UrchinPurple.png"
-            
-        
-    if x > 1000:
-        moving_right = False
-        if ball.image == "UrchinPurple.png":
-            ball.image = "UrchinRed.png"
+            x -= horizontal_speed
+            ball.flip_x = True
+        if moving_down:
+            y += vertical_speed
         else:
-            ball.image = "UrchinPurple.png"
-    if y < 10:
-        moving_down = True
-        if ball.image == "UrchinPurple.png":
-            ball.image = "UrchinRed.png"
-        else:
-            ball.image = "UrchinPurple.png"
-    if y > 573:
-        moving_down = False
-        if ball.image == "UrchinPurple.png":
-            ball.image = "UrchinRed.png"
-        else:
-            ball.image = "UrchinPurple.png"
+            y -= vertical_speed
 
-        
+        ball.center = (x, y)
 
-    # --- Draw --- #
 
-    background.draw()
-    ball.draw()
-    pygame.display.flip()
 
-    c.tick(30)
+
+        if x < 0:
+            moving_right = True
+            if ball.image == "UrchinPurple.png":
+               ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+
+
+        if x > 1000:
+            moving_right = False
+            if ball.image == "UrchinPurple.png":
+                ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+        if y < 10:
+            moving_down = True
+            if ball.image == "UrchinPurple.png":
+                ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+        if y > 573:
+            moving_down = False
+            if ball.image == "UrchinPurple.png":
+                ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+
+
+
+        # --- Draw --- #
+
+        background.draw()
+        ball.draw()
+        pygame.display.flip()
+
+        c.tick(30)
 
 
