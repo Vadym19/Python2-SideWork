@@ -3,10 +3,88 @@ import random
 pygame.init()
 window = pygame.display.set_mode([1018, 573])
 window.fill((0,0,0))
+c = pygame.time.Clock()
+# Sprites
+background = tsk.Sprite("FrozenLake.jpg", 0, 0)
+ball = tsk.Sprite("UrchinPurple.png",300,100)
+
+
+
+# Animation variables
+moving_right = True
+moving_down = True
+vertical_speed = 15
+horizontal_speed = 15
+
+
+
 drawing = True
 while drawing:
 
+
+    # --- Event loop --- #
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             drawing = False
+
+
+
+
+        x, y = ball.center
+        prev_x = x
+        prev_y = y
+
+        if moving_right:
+            x += horizontal_speed
+            ball.flip_x = False
+        else:
+            x -= horizontal_speed
+            ball.flip_x = True
+        if moving_down:
+            y += vertical_speed
+        else:
+            y -= vertical_speed
+
+        ball.center = (x, y)
+
+
+
+
+        if x < 0:
+            moving_right = True
+            if ball.image == "UrchinPurple.png":
+               ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+
+
+        if x > 1000:
+            moving_right = False
+            if ball.image == "UrchinPurple.png":
+                ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+        if y < 10:
+            moving_down = True
+            if ball.image == "UrchinPurple.png":
+                ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+        if y > 573:
+            moving_down = False
+            if ball.image == "UrchinPurple.png":
+                ball.image = "UrchinRed.png"
+            else:
+                ball.image = "UrchinPurple.png"
+
+
+
+        # --- Draw --- #
+
+        background.draw()
+        ball.draw()
+        pygame.display.flip()
+
+        c.tick(30)
+
 
