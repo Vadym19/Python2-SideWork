@@ -9,11 +9,4 @@ while drawing:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             drawing = False
-    pygame.draw.circle(window, (255,255,255), (60, 506), 60)
-    #ball bouncing and color changing element will be put here
-    
 
-
-
-
-    pygame.display.flip()
